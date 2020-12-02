@@ -37,7 +37,7 @@ int main()
   else if (num == 2)
   {
     //getting input from file, store in char array
-    cout << endl << "What is the file name?" << endl <<;
+    cout << endl << "What is the file name?" << endl;
     cin.get(fileName, 20);
     cin.clear();
     cin.ignore(1000000, '\n');
