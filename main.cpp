@@ -178,3 +178,80 @@ void printHeap(int* arr, int n)
   }
   cout << endl;
 }
+
+void printHeap(int* arr, int n) {//printing the heap as an array
+  for (int i = 0; i < n; ++i) {
+    cout << arr[i] << " ";
+  }
+  cout << endl;
+}
+
+void sortHeap(int* arr, int n)
+{
+  //sorting the heap from greatest to least
+
+  int counter = n;
+  int* temp = arr;
+  arr = new int[n];
+
+  for (int i = 0; i < n; i++)
+  {
+    //taking the head of the array and adding it to the final array
+    arr[i] = temp[0];
+
+    //removing the head
+    int* temp2 = new int[counter - 1];
+
+    for (int j = 0; j < counter - 1; j++)
+    {
+      temp2[j] = temp[j + 1];
+    }
+    //cout << endl;
+    counter = counter - 1;
+    temp = temp2;
+    buildHeap(temp, counter);
+  }
+  printHeap(arr, n);
+}
+
+void visualPrint(int* parsed, int n)
+{
+  //printing the array visually
+  int* temp = parsed;
+
+  //moving indexes one spot over for calculatiosn
+  parsed = new int[n + 1];
+
+  for (int i = 0; i < n; i++)
+  {
+    parsed[i + 1] = temp[i];
+  }
+  
+  int levels = ceil(log2(n)); //how many levels
+  int index = 1;
+
+  for (int i = 0; i < levels; i++)
+  {
+    int num = index;
+    for (int j = 0; j < num; j++)
+    {
+      //the index of the first value of each level is the amount of numbers in that level
+      if (index <= n)
+      {
+	cout << parsed[index] << " ";
+	index = index + 1;
+      }
+    }
+    cout << endl;
+    if (i < levels - 1)
+    {
+      for (int k = 0; k < pow(2, i); k++)
+      {
+	//add slashes between each level except last
+	cout << "/\\";
+      }
+      cout << endl;
+    }
+  }
+  cout << endl;
+}
