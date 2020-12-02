@@ -128,3 +128,53 @@ void parseIn(int*& parsed, char input[], int &counter) {//remove spaces between 
   parsed[counter - 1] = atoi(newArray);
 
 }
+
+void heapify(int*& arr, int n, int i)
+{
+  //heapifying
+
+  int largest = i; //initialize largest as root
+  int l = 2 * i + 1; //left child
+  int r = 2 * i + 2; //right child
+
+  //if left is larger than root
+  if (l < n && arr[l] > arr[largest])
+  {
+    largest = l;
+  }
+
+  //if right is larger than root
+  if (r < n && arr[r] > arr[largest])
+  {
+    largest = r;
+  }
+
+  //if largest is not root
+  if (largest != i)
+  {
+    swap(arr[i], arr[largest]);
+    heapify(arr, n, largest);
+  }
+}
+
+void buildHeap(int*& arr, int n)
+{
+  //building the heap
+
+  int start = (n / 2) - 1;
+
+  for (int i = start; i >= 0; i--)
+  {
+    heapify(arr, n, i);
+  }
+}
+
+void printHeap(int* arr, int n)
+{
+  //printing the heap as an array
+  for (int i = 0; i < n; ++i)
+  {
+    cout << arr[i] << " ";
+  }
+  cout << endl;
+}
