@@ -68,3 +68,63 @@ int main()
   sortHeap(parsed, parsedSize);
   return 0;
 }
+
+void parseIn(int*& parsed, char input[], int &counter) {//remove spaces between the chars, make int pointer (array)
+  int pointers[2];
+  int value;
+  int* temp;
+  counter = 1;
+  pointers[0] = -1;
+  for (int i = 0; i < strlen(input); i++)
+  {
+
+    if (input[i] == ' ')
+    {
+      pointers[1] = i;
+      int j = 0;
+      char* newArray = new char[pointers[1] - pointers[0]];
+
+      for (int i = pointers[0] + 1; i < pointers[1]; i++)
+      {
+	newArray[j] = input[i];
+	j = j + 1;
+      }
+      newArray[j] = '\0';
+      temp = parsed;
+      parsed = new int[counter];
+
+      if (counter > 1)
+      {
+	for (int i = 0; i < counter - 1; i++)
+	{
+	  parsed[i] = temp[i];
+	}
+      }
+      parsed[counter - 1] = atoi(newArray);
+      counter = counter + 1;
+      pointers[0] = pointers[1];
+    }
+  }
+  char* newArray = new char[strlen(input) - pointers[0]];
+  int j = 0;
+
+  for (int i = pointers[0] + 1; i < strlen(input); i++)
+  {
+    newArray[j] = input[i];
+    //cout << newArray[j];
+    j = j + 1;
+  }
+  newArray[j] = '\0';
+  temp = parsed;
+  parsed = new int[counter];
+
+  if (counter > 1)
+  {
+    for (int i = 0; i < counter - 1; i++)
+    {
+      parsed[i] = temp[i];
+    }
+  }
+  parsed[counter - 1] = atoi(newArray);
+
+}
