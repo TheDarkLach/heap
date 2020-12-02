@@ -46,6 +46,7 @@ int main()
     cin.clear();
     cin.ignore(1000000, '\n');
     streampos size;
+    //huh
     ifstream file(fileName, ios::in | ios::binary | ios::ate);
 
     if (file.is_open())
@@ -73,7 +74,9 @@ int main()
   return 0;
 }
 
-void parseIn(int*& parsed, char input[], int &counter) {//remove spaces between the chars, make int pointer (array)
+void parseIn(int*& parsed, char input[], int &counter) 
+{
+  //remove spaces between the chars
   int pointers[2];
   int value;
   int* temp;
