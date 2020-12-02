@@ -179,13 +179,6 @@ void printHeap(int* arr, int n)
   cout << endl;
 }
 
-void printHeap(int* arr, int n) {//printing the heap as an array
-  for (int i = 0; i < n; ++i) {
-    cout << arr[i] << " ";
-  }
-  cout << endl;
-}
-
 void sortHeap(int* arr, int n)
 {
   //sorting the heap from greatest to least
